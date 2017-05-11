@@ -12,7 +12,7 @@ class AsyncApp extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, selectedSubreddit } this.props
+    const { dispatch, selectedSubreddit } = this.props
     dispatch(fetchPostsIfNeeded(selectedSubreddit))
   }
 
