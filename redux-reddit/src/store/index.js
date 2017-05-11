@@ -6,15 +6,13 @@ import rootReducer from '../reducers'
 
 const loggerMiddleware = createLogger()
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
+export default function configureStore(preloadedState) {
+  return createStore(
+    rootReducer,
+    preloadedState,
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    )
   )
-)
-
-store.dispatch(selectSubreddit('reactjs'))
-store.dispatch(fetchPostsIfNeeded('reactjs')).then(() =>
-  console.log(store.getState())
-)
+}
